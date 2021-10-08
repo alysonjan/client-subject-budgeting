@@ -20,7 +20,6 @@ export default function(state = initialState, action) {
                 loading: false
             }
         case LOGIN_FAIL:
-            //localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,
