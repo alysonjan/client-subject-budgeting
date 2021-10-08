@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Login = ({login, isAuthenticated }) => {
+const LoginPage = ({login, isAuthenticated }) => {
 
     const classes = useStyles();
 
@@ -151,7 +151,7 @@ const Login = ({login, isAuthenticated }) => {
     )
 };
 
-Login.propTypes = {
+LoginPage.propTypes = {
     login : PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool,
 };
@@ -163,6 +163,6 @@ const mapStateProps = state => ({
 export default connect(
     mapStateProps,
     {
-        login
+        login 
     }
-)(Login);
+)(LoginPage);

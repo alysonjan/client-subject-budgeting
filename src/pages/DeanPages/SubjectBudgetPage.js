@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const SubjectBudget = () => {
+const SubjectBudgetPage = () => {
     const classes = useStyles();
     
     
@@ -51,4 +51,4 @@ const SubjectBudget = () => {
     )
 }
 
-export default SubjectBudget
+export default SubjectBudgetPage

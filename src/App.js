@@ -1,43 +1,14 @@
-import React from 'react'
-import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import PrivateRoute from './routes/PrivateRoute';
-import { withTheme } from './themes/Theme';
-import SubjectBudget from './pages/Dean/SubjectBudget';
-import Login from './pages/Login/Login';
-import Alert from './components/layout/Alert';
+import React from 'react';
 
+import { AuthProvider } from './helpers/AuthProvider';
+import RouteProvider from './routes';
 
-//Redux
-import {Provider} from 'react-redux';
-import store from './store';
-import setAuthToken from './helpers/setAuthToken';
-
-
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
-
-const App =() => {
-
-  
+function App () {
   return (
-    <Provider store={store}>
-      <Router>
-        <div className='App'>
-        <Sidebar/>
-          <Route exact path='/' component={Login} />
-          <section>
-          <Alert/>
-          <Switch>
-            <PrivateRoute exact path='/subject-budget' component={SubjectBudget} />
-          </Switch>
-          </section>
-        </div>
-      </Router>
-    </Provider>
-  );
+    <AuthProvider>
+      <RouteProvider />
+    </AuthProvider>
+  )
 }
 
-export default withTheme(App);
+export default App;
