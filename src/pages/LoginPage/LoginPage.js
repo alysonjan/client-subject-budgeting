@@ -3,7 +3,8 @@ import {Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { login } from '../../actions/auth';
-
+import { useContext } from 'react';
+import { AuthContext } from '../../helpers/AuthProvider';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -76,14 +77,15 @@ const LoginPage = ({login, isAuthenticated }) => {
         email: '',
         password: ''
     });
-
+    const { setIsAuthenticated } = useContext(AuthContext);
     const { email, password } = formData;
-
+ 
+    
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = async e => {
         e.preventDefault();
-        login(email,password)
+        login(email,password,setIsAuthenticated)
     }
 
     if (isAuthenticated) {
