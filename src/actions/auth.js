@@ -1,6 +1,8 @@
 import axiosInstance from "../helpers/axios";
 import { setAlert } from "./alert";
 import { LOGIN_SUCCESS, LOGIN_FAIL } from "../constants/constant";
+
+
 // import setAuthToken from '../helpers/setAuthToken';
 
 //Load User
@@ -17,7 +19,7 @@ import { LOGIN_SUCCESS, LOGIN_FAIL } from "../constants/constant";
 // }
 
 //login User
-export const login = (email,password) => async dispatch => {
+export const login = (email,password,setIsAuthenticated) => async dispatch => {
 
     const body = JSON.stringify({email,password});
 
@@ -27,6 +29,11 @@ export const login = (email,password) => async dispatch => {
             type: LOGIN_SUCCESS,
             payload: res.data
         })
+        setIsAuthenticated(true)
+        localStorage.setItem('token', res.data.encryptedToken);
+
+
+
     } catch (err) {
         const errors = err.response.data.errors;
 
