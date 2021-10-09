@@ -9,3 +9,6 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 //LOGIN
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
+
+export const GENERATE_BUDGET = 'GENERATE_BUDGET';
+export const GENERATE_ERROR = 'GENERATE_ERROR';
