@@ -18,7 +18,7 @@ import { LOGIN_SUCCESS, LOGIN_FAIL } from "../constants/constant";
 //     }
 // }
 
-//login User
+
 export const login = (email,password,setIsAuthenticated) => async dispatch => {
 
     const body = JSON.stringify({email,password});
@@ -31,9 +31,7 @@ export const login = (email,password,setIsAuthenticated) => async dispatch => {
         })
         setIsAuthenticated(true)
         localStorage.setItem('token', res.data.encryptedToken);
-
-
-
+        
     } catch (err) {
         const errors = err.response.data.errors;
 
