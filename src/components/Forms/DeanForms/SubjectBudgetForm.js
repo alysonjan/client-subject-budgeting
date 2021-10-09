@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -7,105 +7,128 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-
-
 import { FormControl } from '@material-ui/core';
+import axiosInstance from '../../../helpers/axios';
+import {withRouter} from 'react-router-dom';
 
-export default function FormDialog() {
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { generateBudget } from '../../../actions/subjectbudget';
 
-    const [open, setOpen] = React.useState(false);
-    const [age, setAge] = React.useState('');
 
+function FormDialog({generateBudget,history}) {
+
+    const [open, setOpen] = useState(false);
+    const [curriculumData, setCurriculumData] = useState([])
+    //const [curriculum, setCurriculum] = useState([])
+    axiosInstance.get('/get/curriculum').then(res => {   
+        setCurriculumData(res.data)
+    })
+    const currCode = Object.values(
+        curriculumData.reduce((a, b) => {
+            if (!a[b.curriculum_code]) a[b.curriculum_code]=b
+            return a
+        },{})
+    )
+
+    const [formData,setFormData] = useState({
+        curriculum_code: '',
+        year_level:'',
+        students:'',
+    });
+
+    const onChange = e => setFormData({...formData,[e.target.name]: e.target.value});
+    const {curriculum_code, year_level, students } = formData;
 
     const handleClickOpen = () => {
         setOpen(true);
         
     };
-
     const handleClose = () => {
         setOpen(false);
     };
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
+    const onSubmit = e => {
+        e.preventDefault();
+        generateBudget(formData,history)
     };
+
 
     return (
         <div>
         <Button variant="contained" color="primary" onClick={handleClickOpen}  >
             Generate Subject
         </Button>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth >
-            <DialogTitle id="form-dialog-title">College Form</DialogTitle>
-            <DialogContent>
-            <TextField
-                autoFocus
-                margin="dense"
-                id="code"
-                label="Code"
-                type="code"
-                fullWidth
-            />
-            <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="Name"
-                type="name"
-                fullWidth
-            />
-            <TextField
-                autoFocus
-                margin="dense"
-                id="dean"
-                label="Dean"
-                type="dean"
-                fullWidth
-            />
-            <FormControl fullWidth >
-                <InputLabel htmlFor="age-native-simple">Type</InputLabel>
-                <Select
-                native
-                value={age}
-                onChange={handleChange}
-                inputProps={{
-                    name: 'age',
-                    id: 'age-native-simple',
-                }}
-                >
-                <option aria-label="None" value="" />
-                <option value={10}>Paramedical</option>
-                <option value={20}>Non-Paramedical</option>
-                </Select>
-            </FormControl>
-            <FormControl fullWidth>
-                <InputLabel htmlFor="age-native-simple">Status</InputLabel>
-                <Select
-                native
-                value={age}
-                onChange={handleChange}
-                inputProps={{
-                    name: 'age',
-                    id: 'age-native-simple',
-                }}
-                >
-                <option aria-label="None" value="" />
-                <option value={10}>Active</option>
-                <option value={20}>Inactive</option>
-                </Select>
-            </FormControl>
 
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth >
+            <DialogTitle id="form-dialog-title">Form</DialogTitle>
+            <form onSubmit={e => onSubmit(e)}>
+            <DialogContent>
+
+            <FormControl fullWidth >
+                <InputLabel htmlFor="curriculum_code">Program</InputLabel>
+                <Select
+                native
+                required
+                name="curriculum_code"
+                value={curriculum_code}
+                onChange={e => onChange(e)}
+                >
+                <option aria-label="None" value="" />
+                {currCode.map((val,key) => {
+                    return (<option key={key} value={val.curriculum_code}>{val.curriculum_code}</option> )
+                })};
+            
+                </Select>
+            </FormControl>
+            <FormControl fullWidth >
+                <InputLabel htmlFor="year_level">Year Level</InputLabel>
+                <Select
+                native
+                required
+                value={year_level}
+                name="year_level"
+                onChange={e => onChange(e)}
+
+                >
+                <option aria-label="None" value="" />
+                {curriculumData.map((val,key) => {
+                    return(<option key={key} value={val.year_level}>{val.year_level}</option>)
+                })};
+
+                </Select>
+            </FormControl>
+            <TextField
+                autoFocus
+                margin="dense"
+                id="students"
+                label="Students"
+                type="Number"
+                value={students}
+                name="students"
+                onChange={e => onChange(e)}
+                fullWidth
+                required
+            />
 
             </DialogContent>
             <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button variant='outlined' onClick={handleClose} color="primary">
                 Cancel
             </Button>
-            <Button onClick={handleClose} color="primary">
-                Add
+            <Button type='submit' variant='contained' color="primary">
+                Generate
             </Button>
             </DialogActions>
+            </form>
         </Dialog>
         </div>
     );
 }
+
+FormDialog.propTypes = {
+    generateBudget: PropTypes.func.isRequired,
+}
+
+
+export default connect(null,{generateBudget})(withRouter(FormDialog));
