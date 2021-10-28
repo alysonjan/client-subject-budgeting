@@ -13,6 +13,7 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 
 // Pages
 import SubjectBudgetPage from '../pages/DeanPages/SubjectBudgetPage';
+import testPage from '../pages/DeanPages/TestSubject';
 
 // Style
 import '../App.css';
@@ -26,6 +27,7 @@ const RouteComponent = () => {
                 <SidebarComponent />
                 <Switch>
                     <ProtectedRoute exact path='/subject-budget' component={SubjectBudgetPage} />
+                    <ProtectedRoute exact path='/test' component={testPage} />
                     <Redirect to='/subject-budget' />
                 </Switch>
             </div>

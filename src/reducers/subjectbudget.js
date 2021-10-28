@@ -1,4 +1,4 @@
-import { GENERATE_BUDGET,GENERATE_ERROR } from "../constants/constant";
+import { GENERATE_SUCCESS,GENERATE_ERROR } from "../constants/constant";
 
 const initialState = {
     loading:true,
@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
     const {type, payload} = action;
 
     switch (type) {
-        case GENERATE_BUDGET:
+        case GENERATE_SUCCESS:
             return{
                 ...state,
                 ...payload,

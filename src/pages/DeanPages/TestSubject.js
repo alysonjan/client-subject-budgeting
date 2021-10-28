@@ -1,8 +1,8 @@
 import React,{useEffect, useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core'
-import CollegeTable from '../../components/Tables/DeanTable/SubjectBudgetTable';
-import CollegeForm from '../../components/Forms/DeanForms/SubjectBudgetForm';
+import TestTable from '../../components/Tables/DeanTable/TestSubjectTable';
+// import CollegeForm from '../../components/Forms/DeanForms/SubjectBudgetForm';
 
 import axiosInstance from '../../helpers/axios';
 
@@ -30,14 +30,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const SubjectBudgetPage = () => {
+const TestSubject = () => {
     const classes = useStyles();
 
-    const [subjectBudget, setSubjectBudget] = useState([])
+    const [data, setData] = useState([])
 
     useEffect(()=>{
         axiosInstance.get('/get/subject-budget').then(res => {   
-            setSubjectBudget(res.data)
+            setData(res.data)
         });
     },[])
 
@@ -45,12 +45,12 @@ const SubjectBudgetPage = () => {
     return (
     <div className={classes.root}>
         <div className={classes.mainContainer}>
-        <div className={classes.button} >
+        {/* <div className={classes.button} >
             <CollegeForm />
         </div>
-        <br />
+        <br /> */}
             <Paper elevation={2}> 
-                <CollegeTable subjectBudget={subjectBudget} />
+                <TestTable data={data} />
             </Paper>
 
         </div>
@@ -59,4 +59,4 @@ const SubjectBudgetPage = () => {
     )
 }
 
-export default SubjectBudgetPage
+export default TestSubject
