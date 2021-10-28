@@ -8,7 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: '#676767',
@@ -29,28 +28,24 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     // },
     }));
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+export default function DenseTable({subjectBudget}) {
 
-export default function DenseTable() {
+    const sectionsSum = subjectBudget.map(item => item.no_of_sections).reduce((prev, curr)=> prev + curr,0);
+    const totalTeachingHrsSum = subjectBudget.map(item => item.overall_teaching_hours).reduce((prev,curr)=> prev + curr, 0);
+    const noOfFacultySum = subjectBudget.map(item => item.no_of_faculty).reduce((prev,curr)=> prev + curr, 0);
+    const radHoursSum = subjectBudget.map(item => item.rad_hours).reduce((prev,curr)=> prev + curr, 0);
+
     return (
         <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="subject budgeting table">
             <TableHead>
             <TableRow>
+                <StyledTableCell align="center">Year</StyledTableCell>
                 <StyledTableCell align="center">Course code</StyledTableCell>
                 <StyledTableCell align="center">Descriptive Title</StyledTableCell>
-                <StyledTableCell align="center" colSpan={3}>Units</StyledTableCell>
-                <StyledTableCell align="center" colSpan={3}>Teaching hrs.</StyledTableCell>
+                <StyledTableCell align="center" colSpan={3}>Units<br/>Lec Lab Total</StyledTableCell>
+                <StyledTableCell align="center" colSpan={3}>Teaching hrs<br/>Lec Lab Total</StyledTableCell>
                 <StyledTableCell align="center">Students</StyledTableCell>
                 <StyledTableCell align="center">No. of Sections</StyledTableCell>
                 <StyledTableCell align="center">Total Teaching hrs.</StyledTableCell>
@@ -60,30 +55,34 @@ export default function DenseTable() {
             </TableRow>
             </TableHead>
             <TableBody>
-            {rows.map((row) => (
-                <StyledTableRow
-                key={row.name}
-                //sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                //sx={{ borderRight: 2  }}
-                >
-                <StyledTableCell component="th" scope="row"  sx={{ borderRight: 1,borderRightColor: '#676767'}}>{row.name}</StyledTableCell>
-                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{row.calories}</StyledTableCell>
-                <StyledTableCell align="left" >{row.fat}</StyledTableCell>
-                <StyledTableCell align="left" >{row.fat}</StyledTableCell>
-                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{row.fat}</StyledTableCell>
-                <StyledTableCell align="left">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="left">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{row.carbs}</StyledTableCell>
-                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{row.protein}</StyledTableCell>
-                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{row.protein}</StyledTableCell>
-                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{row.protein}</StyledTableCell>
-                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{row.protein}</StyledTableCell>
-                <StyledTableCell align="left">{row.protein}</StyledTableCell>
+            {subjectBudget.map((item,index)=>(
+
+                <StyledTableRow key={index}>
+                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.year_level}</StyledTableCell>
+                <StyledTableCell sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.subject_code}</StyledTableCell>
+                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.subject_name}</StyledTableCell>
+                <StyledTableCell align="left" >{item.lec_units}</StyledTableCell>
+                <StyledTableCell align="left" >{item.lab_units}</StyledTableCell>
+                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.total_units}</StyledTableCell>
+                <StyledTableCell align="left">{item.lec_teaching_hours}</StyledTableCell>
+                <StyledTableCell align="left">{item.lab_teaching_hours}</StyledTableCell>
+                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.total_teaching_hours}</StyledTableCell>
+                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.students}</StyledTableCell>
+                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.no_of_sections}</StyledTableCell>
+                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.overall_teaching_hours}</StyledTableCell>
+                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.no_of_faculty}</StyledTableCell>
+                <StyledTableCell align="center">{item.rad_hours}</StyledTableCell>
 
                 </StyledTableRow>
             ))}
             </TableBody>
         </Table>
+        <div style={{margin:'10px'}}>
+        <details>
+            <summary>TOTAL</summary>
+            Sections: {sectionsSum} <br/>Teaching Hours: {totalTeachingHrsSum} <br/>No. of Faculty: {noOfFacultySum.toFixed(1)} <br/>RAD hours: {radHoursSum}
+        </details>
+        </div>
         </TableContainer>
     );
 }
