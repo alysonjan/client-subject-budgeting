@@ -18,6 +18,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuIcon from '@mui/icons-material/Menu';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const drawerWidth = 240;
@@ -151,15 +152,13 @@ export default function MiniDrawer() {
                         </ListItem>
                     </Link>
 
-
-                    {/*
-                    <Link to='/courses' className={classes.link}>
-                        <ListItem button key={'Courses'}>
-                            <ListItemIcon> <ImportContactsIcon/> </ListItemIcon>
-                            <ListItemText primary={'Courses'} />
+                    <Link to='/test' className={classes.link}>
+                        <ListItem button key={'Subject Loading'}>
+                            <ListItemIcon> <ListAltIcon/> </ListItemIcon>
+                            <ListItemText primary={'Subject Loading'} />
                         </ListItem>
                     </Link>
-
+                    {/*
                     <Link to='/subjects' className={classes.link}>
                         <ListItem button key={'Subjects'}>
                             <ListItemIcon> <BookRoundedIcon/> </ListItemIcon>
