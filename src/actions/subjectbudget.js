@@ -1,13 +1,13 @@
 import axiosInstance from "../helpers/axios";
 import { setAlert } from './alert';
-import { GENERATE_BUDGET,GENERATE_ERROR } from "../constants/constant";
+import { GENERATE_SUCCESS,GENERATE_ERROR } from "../constants/constant";
 
 
 export const generateBudget = (formData,history) => async dispatch => {
     try {
         const res = await axiosInstance.post('/generate/subject/add',formData)
         dispatch({
-            type:GENERATE_BUDGET,
+            type:GENERATE_SUCCESS,
             payload: res.data
         });
         //@TODO success alert message

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -9,21 +9,21 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import { FormControl } from '@material-ui/core';
 import axiosInstance from '../../../helpers/axios';
-import {withRouter} from 'react-router-dom';
-
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { generateBudget } from '../../../actions/subjectbudget';
 
 
-function FormDialog({generateBudget,history}) {
+function FormDialog() {
 
     const [open, setOpen] = useState(false);
+
     const [curriculumData, setCurriculumData] = useState([])
-    //const [curriculum, setCurriculum] = useState([])
-    axiosInstance.get('/get/curriculum').then(res => {   
-        setCurriculumData(res.data)
-    })
+
+    useEffect(()=>{
+        axiosInstance.get('/get/curriculum').then(res => {   
+            setCurriculumData(res.data)
+        });
+    },[])
+    
+
     const currCode = Object.values(
         curriculumData.reduce((a, b) => {
             if (!a[b.curriculum_code]) a[b.curriculum_code]=b
@@ -33,24 +33,32 @@ function FormDialog({generateBudget,history}) {
 
     const [formData,setFormData] = useState({
         curriculum_code: '',
-        year_level:'',
-        students:'',
+        first_year_students:'',
+        second_year_students:'',
+        third_year_students:'',
+        fourth_year_students:'',
     });
 
     const onChange = e => setFormData({...formData,[e.target.name]: e.target.value});
-    const {curriculum_code, year_level, students } = formData;
+    const {curriculum_code, first_year_students, second_year_students, third_year_students, fourth_year_students } = formData;
 
     const handleClickOpen = () => {
         setOpen(true);
-        
     };
+
     const handleClose = () => {
         setOpen(false);
     };
 
-    const onSubmit = e => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        generateBudget(formData,history)
+        try {
+            await axiosInstance.post('/generate-subject/add',formData).then(res => {
+                if (res.status === 200) setOpen(false);
+            })
+        } catch (err) {
+            console.error(err);
+        }
     };
 
 
@@ -81,7 +89,7 @@ function FormDialog({generateBudget,history}) {
             
                 </Select>
             </FormControl>
-            <FormControl fullWidth >
+            {/* <FormControl fullWidth >
                 <InputLabel htmlFor="year_level">Year Level</InputLabel>
                 <Select
                 native
@@ -95,17 +103,48 @@ function FormDialog({generateBudget,history}) {
                 {curriculumData.map((val,key) => {
                     return(<option key={key} value={val.year_level}>{val.year_level}</option>)
                 })};
-
                 </Select>
-            </FormControl>
+            </FormControl> */}
+
             <TextField
-                autoFocus
                 margin="dense"
-                id="students"
-                label="Students"
+                label="First Year Students"
                 type="Number"
-                value={students}
-                name="students"
+                value={first_year_students}
+                name="first_year_students"
+                onChange={e => onChange(e)}
+                fullWidth
+                required
+            />
+
+            <TextField
+                margin="dense"
+                label="Second Year Students"
+                type="Number"
+                value={second_year_students}
+                name="second_year_students"
+                onChange={e => onChange(e)}
+                fullWidth
+                required
+            />
+
+            <TextField
+                margin="dense"
+                label="Third Year Students"
+                type="Number"
+                value={third_year_students}
+                name="third_year_students"
+                onChange={e => onChange(e)}
+                fullWidth
+                required
+            />
+
+            <TextField
+                margin="dense"
+                label="Fourth Year Students"
+                type="Number"
+                value={fourth_year_students}
+                name="fourth_year_students"
                 onChange={e => onChange(e)}
                 fullWidth
                 required
@@ -126,9 +165,5 @@ function FormDialog({generateBudget,history}) {
     );
 }
 
-FormDialog.propTypes = {
-    generateBudget: PropTypes.func.isRequired,
-}
 
-
-export default connect(null,{generateBudget})(withRouter(FormDialog));
+export default FormDialog;
