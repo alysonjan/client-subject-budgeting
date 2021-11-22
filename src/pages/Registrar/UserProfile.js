@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core'
 import UserProfileTable from '../../components/Tables/RegistrarTable/UserProfileTable';
+import UserProfileForm from '../../components/Forms/RegistrarForms/UserProfileForm';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,9 +31,13 @@ const UserProfile = () => {
 
     <div className={classes.root}>
         <div className={classes.mainContainer}>
-                <Paper elevation={2}> 
-                    <UserProfileTable/>
-                </Paper>
+            <div className={classes.button} >
+                <UserProfileForm />
+            </div>
+            <br />
+            <Paper elevation={2}> 
+                <UserProfileTable/>
+            </Paper>
 
         </div>
     </div>

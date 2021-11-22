@@ -2,6 +2,8 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core'
 import DepartmentTable from '../../components/Tables/RegistrarTable/DepartmentTable';
+import DepartmentForm from '../../components/Forms/RegistrarForms/DepartmentForm'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,10 +32,13 @@ const Department = () => {
 
     <div className={classes.root}>
         <div className={classes.mainContainer}>
-                <Paper elevation={2}> 
-                    <DepartmentTable/>
-                </Paper>
-
+            <div className={classes.button} >
+                <DepartmentForm />
+            </div>
+            <br />
+            <Paper elevation={2}> 
+                <DepartmentTable/>
+            </Paper>
         </div>
     </div>
 

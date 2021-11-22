@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react';
 
 const token = localStorage.getItem('token');
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
     // @TODO temporary solution

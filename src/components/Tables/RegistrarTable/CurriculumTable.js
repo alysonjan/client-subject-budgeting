@@ -62,7 +62,6 @@ const CurriculumTable = () => {
 
 
     return (
-        <>
         <MaterialTable
             title="Curriculum Information"
             icons = {tableIcons}
@@ -92,16 +91,10 @@ const CurriculumTable = () => {
             }}
             columns={[
                 {
-                    title: 'ID', field: 'curriculum_id',
-                },
-                {
                     title: 'Code', field: 'curriculum_code',
                 },
                 {
                     title: 'College code', field: 'college_code',
-                },
-                {
-                    title: 'Course code', field: 'course_code',
                 },
                 {
                     title: 'Subject code', field: 'subject_code',
@@ -129,59 +122,58 @@ const CurriculumTable = () => {
                 },
             ]}
 
-           // editable={{
-                // onRowUpdate: (newData, oldData) =>
-                //     new Promise((resolve, reject) => {
-                //         setTimeout(() => {
-                //             const dataUpdate = [curriculumData];
-                //             const index = oldData.tableData.id;
-                //             dataUpdate[index] = newData;
+            editable={{
+                onRowUpdate: (newData, oldData) =>
+                    new Promise((resolve, reject) => {
+                            // setTimeout(() => {
+                            //     const dataUpdate = [curriculumData];
+                            //     const index = oldData.tableData.id;
+                            //     dataUpdate[index] = newData;
 
-                //             axiosInstance.put('api/registrar/update/curriculum',
-                //                 {
-                //                     collegeCode: curriculumData[index].college_code,
-                                    
-                //                     collegeName: dataUpdate[index].college_name,
-                //                     collegeDean: dataUpdate[index].dean,
-                //                     collegeType: dataUpdate[index].college_type,
-                //                     status: dataUpdate[index].status,
-                //                 }).then((response) => {
-                //                     if (response.data.error) {
-                //                         //response modal
-                //                         reject();
-                //                     } else {
-                //                         setCurriculumData([...dataUpdate]);
-                //                         setChangeTrigger(!changeTrigger);
-                //                         resolve();
-                //                     }
-                //                 });
-                //         }, 1000)
-                //     }),
-            //     onRowDelete: oldData =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataDelete = [...curriculumData];
-            //                 const index = oldData.tableData.id;
-            //                 dataDelete.splice(index, 1);
+                            //     axiosInstance.put('api/registrar/update/curriculum',
+                            //         {
+                            //             collegeCode: curriculumData[index].college_code,
+                                        
+                            //             collegeName: dataUpdate[index].college_name,
+                            //             collegeDean: dataUpdate[index].dean,
+                            //             collegeType: dataUpdate[index].college_type,
+                            //             status: dataUpdate[index].status,
+                            //         }).then((response) => {
+                            //             if (response.data.error) {
+                            //                 //response modal
+                            //                 reject();
+                            //             } else {
+                            //                 setCurriculumData([...dataUpdate]);
+                            //                 setChangeTrigger(!changeTrigger);
+                            //                 resolve();
+                            //             }
+                            //         });
+                            // }, 1000)
+                    }),
+            onRowDelete: oldData =>
+                new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataDelete = [...curriculumData];
+                        //     const index = oldData.tableData.id;
+                        //     dataDelete.splice(index, 1);
 
-            //                 axiosInstance.post('api/registrar/delete/curriculum',
-            //                     {
-            //                         curriculumID: curriculumData[index].curriculum_id,
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setCurriculumData([...dataDelete]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            // }}
+                        //     axiosInstance.post('api/registrar/delete/curriculum',
+                        //         {
+                        //             curriculumID: curriculumData[index].curriculum_id,
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setCurriculumData([...dataDelete]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+            }}
         />
-    </>
     )
 }
 

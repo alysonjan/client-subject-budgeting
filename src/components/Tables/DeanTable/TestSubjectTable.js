@@ -7,6 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import PersonAddRoundedIcon from '@mui/icons-material/PersonAddRounded';
+import SubjectLoadingForm from '../../Forms/DeanForms/SubjectLoadingForm';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -29,12 +31,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     }));
 
 
-export default function DenseTable({subjectBudget}) {
+export default function DenseTable({data}) {
 
-    const sectionsSum = subjectBudget.map(item => item.no_of_sections).reduce((prev, curr)=> prev + curr,0);
-    const totalTeachingHrsSum = subjectBudget.map(item => item.overall_teaching_hours).reduce((prev,curr)=> prev + curr, 0);
-    const noOfFacultySum = subjectBudget.map(item => item.no_of_faculty).reduce((prev,curr)=> prev + curr, 0);
-    const radHoursSum = subjectBudget.map(item => item.rad_hours).reduce((prev,curr)=> prev + curr, 0);
+    const sectionsSum = data.map(item => item.no_of_sections).reduce((prev, curr)=> prev + curr,0);
+    const totalTeachingHrsSum = data.map(item => item.overall_teaching_hours).reduce((prev,curr)=> prev + curr, 0);
+    const noOfFacultySum = data.map(item => item.no_of_faculty).reduce((prev,curr)=> prev + curr, 0);
+    const radHoursSum = data.map(item => item.rad_hours).reduce((prev,curr)=> prev + curr, 0);
 
     return (
         <TableContainer component={Paper}>
@@ -51,11 +53,12 @@ export default function DenseTable({subjectBudget}) {
                 <StyledTableCell align="center">Total Teaching hrs.</StyledTableCell>
                 <StyledTableCell align="center">No. of Faculty</StyledTableCell>
                 <StyledTableCell align="center">RAD hrs.</StyledTableCell>
+                <StyledTableCell align="center">Action</StyledTableCell>
 
             </TableRow>
             </TableHead>
             <TableBody>
-            {subjectBudget.map((item,index)=>(
+            {data.map((item,index)=>(
 
                 <StyledTableRow key={index}>
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.year_level}</StyledTableCell>
@@ -71,7 +74,9 @@ export default function DenseTable({subjectBudget}) {
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.no_of_sections}</StyledTableCell>
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.overall_teaching_hours}</StyledTableCell>
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.no_of_faculty}</StyledTableCell>
-                <StyledTableCell align="center">{item.rad_hours}</StyledTableCell>
+                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.rad_hours}</StyledTableCell>
+                <StyledTableCell align="center"><SubjectLoadingForm/></StyledTableCell>
+                
 
                 </StyledTableRow>
             ))}

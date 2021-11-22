@@ -61,7 +61,6 @@ const SubjectTable = () => {
     }, []);
 
     return (
-        <>
         <MaterialTable
             title="Subject Information"
             icons = {tableIcons}
@@ -92,9 +91,6 @@ const SubjectTable = () => {
 
             columns={[
                 {
-                    title: 'ID', field: 'subject_id',
-                },
-                {
                     title: 'Code', field: 'subject_code',
                 },
                 {
@@ -116,77 +112,66 @@ const SubjectTable = () => {
                     title: 'Category', field: 'subject_category',
                 },
                 {
-                    title: 'Hours', field: 'contact_hours',
-                },
-                {
                     title: 'Status', field: 'status',
                 },
-                
-                
-
             ]}
 
-            // editable={{
-            //     onRowUpdate: (newData, oldData) =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataUpdate = [...subjectData];
-            //                 const index = oldData.tableData.id;
-            //                 dataUpdate[index] = newData;
+            editable={{
+                onRowUpdate: (newData, oldData) =>
+                    new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataUpdate = [...subjectData];
+                        //     const index = oldData.tableData.id;
+                        //     dataUpdate[index] = newData;
 
-            //                 axiosInstance.put('api/registrar/update/subject',
-            //                     {
-            //                         subjectCode: subjectData[index].subject_code,
-            //                         subjectName: dataUpdate[index].subject_name,
-            //                         subjectType: dataUpdate[index].subject_type,
-            //                         status: dataUpdate[index].status,
-            //                         contactHours: dataUpdate[index].contact_hours,
-            //                         lec: dataUpdate[index].lec_units,
-            //                         lab: dataUpdate[index].lab_units,
-            //                         totalUnits: dataUpdate[index].total_units,
+                        //     axiosInstance.put('api/registrar/update/subject',
+                        //         {
+                        //             subjectCode: subjectData[index].subject_code,
+                        //             subjectName: dataUpdate[index].subject_name,
+                        //             subjectType: dataUpdate[index].subject_type,
+                        //             status: dataUpdate[index].status,
+                        //             contactHours: dataUpdate[index].contact_hours,
+                        //             lec: dataUpdate[index].lec_units,
+                        //             lab: dataUpdate[index].lab_units,
+                        //             totalUnits: dataUpdate[index].total_units,
 
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setSubjectData([...dataUpdate]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            //     onRowDelete: oldData =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataDelete = [...subjectData];
-            //                 const index = oldData.tableData.id;
-            //                 dataDelete.splice(index, 1);
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setSubjectData([...dataUpdate]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+                onRowDelete: oldData =>
+                    new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataDelete = [...subjectData];
+                        //     const index = oldData.tableData.id;
+                        //     dataDelete.splice(index, 1);
 
-            //                 axiosInstance.post('api/registrar/delete/subject',
-            //                     {
-            //                         subjectCode: subjectData[index].subject_code,
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setSubjectData([...dataDelete]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            // }}
+                        //     axiosInstance.post('api/registrar/delete/subject',
+                        //         {
+                        //             subjectCode: subjectData[index].subject_code,
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setSubjectData([...dataDelete]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+            }}
 
-
-            
         />
-    </>
-            
-        
     )
 }
 

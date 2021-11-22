@@ -61,7 +61,6 @@ const CourseTable = () => {
         fetchCoursesData();
     }, []);
     return (
-        <>
         <MaterialTable
             title="Course Information"
             icons = {tableIcons}
@@ -91,16 +90,10 @@ const CourseTable = () => {
             }}
             columns={[
                 {
-                    title: 'ID', field: 'course_id',
-                },
-                {
-                    title: 'Course', field: 'course_code',
-                },
-                {
                     title: 'Code', field: 'college_code',
                 },
                 {
-                    title: 'Department', field: 'department_code',
+                    title: 'Department', field: 'department_name',
                 },
                 {
                     title: 'Course', field: 'course_name',
@@ -109,7 +102,7 @@ const CourseTable = () => {
                     title: 'Description', field: 'course_description',
                 },
                 {
-                    title: 'Status', field: 'status',
+                    title: 'Status', field: 'course_status',
                 },
                 {
                     title: 'Years', field: 'no_of_years',
@@ -117,59 +110,58 @@ const CourseTable = () => {
 
             ]}
             
-            // editable={{
-            //     onRowUpdate: (newData, oldData) =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataUpdate = [...courseData];
-            //                 const index = oldData.tableData.id;
-            //                 dataUpdate[index] = newData;
+            editable={{
+                onRowUpdate: (newData, oldData) =>
+                    new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataUpdate = [...courseData];
+                        //     const index = oldData.tableData.id;
+                        //     dataUpdate[index] = newData;
 
-            //                 axiosInstance.put('api/registrar/update/course',
-            //                     {
-            //                         courseCode: courseData[index].course_code,
-            //                         courseName: dataUpdate[index].course_name,
-            //                         courseDescription: dataUpdate[index].course_description,
-            //                         noOfYrs: dataUpdate[index].no_of_years,
-            //                         status: dataUpdate[index].status,
+                        //     axiosInstance.put('api/registrar/update/course',
+                        //         {
+                        //             courseCode: courseData[index].course_code,
+                        //             courseName: dataUpdate[index].course_name,
+                        //             courseDescription: dataUpdate[index].course_description,
+                        //             noOfYrs: dataUpdate[index].no_of_years,
+                        //             status: dataUpdate[index].status,
     
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setCourseData([...dataUpdate]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            //     onRowDelete: oldData =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataDelete = [...courseData];
-            //                 const index = oldData.tableData.id;
-            //                 dataDelete.splice(index, 1);
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setCourseData([...dataUpdate]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+                onRowDelete: oldData =>
+                    new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataDelete = [...courseData];
+                        //     const index = oldData.tableData.id;
+                        //     dataDelete.splice(index, 1);
 
-            //                 axiosInstance.post('api/registrar/delete/course',
-            //                     {
-            //                         courseCode: courseData[index].course_code,
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setCourseData([...dataDelete]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            // }}
+                        //     axiosInstance.post('api/registrar/delete/course',
+                        //         {
+                        //             courseCode: courseData[index].course_code,
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setCourseData([...dataDelete]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+            }}
         />
-    </>
     )
 }
 

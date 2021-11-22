@@ -1,6 +1,7 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState,useEffect } from 'react'
 import MaterialTable from 'material-table'
 import axiosInstance from '../../../helpers/axios';
+
 
 
 import { forwardRef } from 'react';
@@ -19,6 +20,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+
 
 
 const tableIcons = {
@@ -41,29 +43,29 @@ const tableIcons = {
     ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
 };
 
-const UserProfileTable = () => {
+const CollegeTable = () => {
 
-    const [userProfileData, setUserProfileData] = useState([])
+    const [collegeData, setCollegeData] = useState([])
     //const [changeTrigger, setChangeTrigger] = useState(false);
 
-    const fetchUserProfileData = async () => {
+    const fetchCollegesData = async () => {
         try {
-            const { data } = await axiosInstance.get('/user-profile');
-            setUserProfileData(data.result);
+            const { data } = await axiosInstance.get('/colleges');
+            setCollegeData(data.result);
         } catch (err) {
             console.error(err.message)
         }
     };
 
     useEffect(() => {
-        fetchUserProfileData();
+        fetchCollegesData();
     }, []);
-
     return (
+        // <>
         <MaterialTable
-            title="User Profile"
+            title="College Information"
             icons = {tableIcons}
-            data = {userProfileData}
+            data={collegeData}
             options={{
                 draggable: false,
                 sorting: false,
@@ -89,65 +91,42 @@ const UserProfileTable = () => {
             }}
             columns={[
                 {
-                    title: 'ID', field: 'userid',
+                    title: 'Code', field: 'college_code',
                 },
                 {
-                    title: 'Lastname', field: 'lastname',
+                    title: 'College', field: 'college_name',
                 },
                 {
-                    title: 'Firstname', field: 'firstname',
+                    title: 'Type', field: 'college_type',
                 },
                 {
-                    title: 'Middlename', field: 'middlename',
+                    title: 'Status', field: 'college_status',
                 },
-                {
-                    title: 'Birthdate', field: 'birthdate',
-                },
-                {
-                    title: 'Gender', field: 'gender',
-                },
-                {
-                    title: 'Address', field: 'address',
-                },
-                {
-                    title: 'Contact #', field: 'contact_number',
-                },
-                {
-                    title: 'Email', field: 'email',
-                },
-                {
-                    title: 'Role', field: 'role',
-                },
-                
-                
+
             ]}
+            
             editable={{
                 onRowUpdate: (newData, oldData) =>
                     new Promise((resolve, reject) => {
                         // setTimeout(() => {
-                        //     const dataUpdate = [...userProfileData];
+                        //     const dataUpdate = [...courseData];
                         //     const index = oldData.tableData.id;
                         //     dataUpdate[index] = newData;
 
-                        //     axiosInstance.put('api/registrar/update/user',
+                        //     axiosInstance.put('api/registrar/update/course',
                         //         {
-                        //             userID: userProfileData[index].userid,
-                        //             lastname: dataUpdate[index].lastname,
-                        //             firstname: dataUpdate[index].firstname,
-                        //             middlename: dataUpdate[index].middlename,
-                        //             birthdate: dataUpdate[index].birthdate,
-                        //             gender: dataUpdate[index].gender,
-                        //             address: dataUpdate[index].address,
-                        //             contactNo: dataUpdate[index].contact_number,
-                        //             emailAddress: dataUpdate[index].email_address,
-                        //             username: dataUpdate[index].username,
-                        //             role: dataUpdate[index].role,
+                        //             courseCode: courseData[index].course_code,
+                        //             courseName: dataUpdate[index].course_name,
+                        //             courseDescription: dataUpdate[index].course_description,
+                        //             noOfYrs: dataUpdate[index].no_of_years,
+                        //             status: dataUpdate[index].status,
+    
                         //         }).then((response) => {
                         //             if (response.data.error) {
                         //                 //response modal
                         //                 reject();
                         //             } else {
-                        //                 setUserProfileData([...dataUpdate]);
+                        //                 setCourseData([...dataUpdate]);
                         //                 setChangeTrigger(!changeTrigger);
                         //                 resolve();
                         //             }
@@ -157,19 +136,19 @@ const UserProfileTable = () => {
                 onRowDelete: oldData =>
                     new Promise((resolve, reject) => {
                         // setTimeout(() => {
-                        //     const dataDelete = [...userProfileData];
+                        //     const dataDelete = [...courseData];
                         //     const index = oldData.tableData.id;
                         //     dataDelete.splice(index, 1);
 
-                        //     axiosInstance.post('api/registrar/delete/user',
+                        //     axiosInstance.post('api/registrar/delete/course',
                         //         {
-                        //             userid: userProfileData[index].userid,
+                        //             courseCode: courseData[index].course_code,
                         //         }).then((response) => {
                         //             if (response.data.error) {
                         //                 //response modal
                         //                 reject();
                         //             } else {
-                        //                 setUserProfileData([...dataDelete]);
+                        //                 setCourseData([...dataDelete]);
                         //                 setChangeTrigger(!changeTrigger);
                         //                 resolve();
                         //             }
@@ -178,7 +157,8 @@ const UserProfileTable = () => {
                     }),
             }}
         />
+    // </>
     )
 }
 
-export default UserProfileTable
+export default CollegeTable

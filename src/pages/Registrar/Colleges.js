@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
-import CurriculumTable from '../../components/Tables/RegistrarTable/CurriculumTable';
-import CurriculumForm from '../../components/Forms/RegistrarForms/CurriculumForm';
+import { Paper } from '@material-ui/core'
+import CollegeTable from '../../components/Tables/RegistrarTable/CollegeTable';
+import CollegeForm from '../../components/Forms/RegistrarForms/CollegeForm';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,27 +21,30 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         paddingBottom: '100px',
     },
+    button:{
+        display: 'flex',
+        justifyContent: 'start',
+    },
 
 }));
 
 
-const Curriculum = () => {
+const Colleges = () => {
     const classes = useStyles();
-    return (
 
+    return (
     <div className={classes.root}>
         <div className={classes.mainContainer}>
             <div className={classes.button} >
-                <CurriculumForm />
+                <CollegeForm />
             </div>
             <br />
             <Paper elevation={2}> 
-                <CurriculumTable/>
+                <CollegeTable/>
             </Paper>
         </div>
     </div>
-
     )
 }
 
-export default Curriculum;
+export default Colleges;
