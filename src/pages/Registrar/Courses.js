@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core'
 import CourseTable from '../../components/Tables/RegistrarTable/CourseTable';
+import CourseForm from '../../components/Forms/RegistrarForms/CourseForm';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,10 +31,13 @@ const Courses = () => {
 
     <div className={classes.root}>
         <div className={classes.mainContainer}>
-                <Paper elevation={2}> 
-                    <CourseTable/>
-                </Paper>
-
+            <div className={classes.button} >
+                <CourseForm />
+            </div>
+            <br />
+            <Paper elevation={2}> 
+                <CourseTable/>
+            </Paper>
         </div>
     </div>
 

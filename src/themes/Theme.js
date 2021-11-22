@@ -12,12 +12,12 @@ const theme = createTheme ({
             main: "#580606",
         },
         secondary: {
-            main: "#0046ae"
+            main: "#00ae5d"
         },
         danger: {
             main: "#b14449"
         },
-        success: {
+        tertiary: {
             main: "#00ae5d"
         },
     },

@@ -61,7 +61,6 @@ const FacultyManagementTable = () => {
     }, []);
 
     return (
-        <>
         <MaterialTable
             title="Employee Information"
             icons = {tableIcons}
@@ -118,76 +117,74 @@ const FacultyManagementTable = () => {
                     title: 'Position', field: 'position',
                 },
                 {
-                    title: 'Contact #', field: 'contact_no',
+                    title: 'Contact #', field: 'contact_number',
                 },
                 {
-                    title: 'Email', field: 'email_address',
+                    title: 'Email', field: 'email',
                 },
                 {
                     title: 'Status', field: 'status',
                 },
             ]}
-            // editable={{
-            //     onRowUpdate: (newData, oldData) =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataUpdate = [...employeeData];
-            //                 const index = oldData.tableData.id;
-            //                 dataUpdate[index] = newData;
+            editable={{
+                onRowUpdate: (newData, oldData) =>
+                    new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataUpdate = [...employeeData];
+                        //     const index = oldData.tableData.id;
+                        //     dataUpdate[index] = newData;
 
-            //                 axiosInstance.put('api/registrar/update/employee',
-            //                     {
-            //                         employee_no: employeeData[index].employee_no,
-            //                         lastname: dataUpdate[index].last_name,
-            //                         firstname: dataUpdate[index].first_name,
-            //                         middlename : dataUpdate[index].middle_name,
-            //                         birthdate: dataUpdate[index].birth_date,
-            //                         gender: dataUpdate[index].gender,
-            //                         address: dataUpdate[index].home_address,
-            //                         educationalAttainment: dataUpdate[index].education_attainment,
-            //                         position: dataUpdate[index].position,
-            //                         contactNo: dataUpdate[index].contact_number,
-            //                         emailAddress: dataUpdate[index].email_address,
-            //                         status: dataUpdate[index].status,
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setEmployeeData([...dataUpdate]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            //     onRowDelete: oldData =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataDelete = [...employeeData];
-            //                 const index = oldData.tableData.id;
-            //                 dataDelete.splice(index, 1);
+                        //     axiosInstance.put('api/registrar/update/employee',
+                        //         {
+                        //             employee_no: employeeData[index].employee_no,
+                        //             lastname: dataUpdate[index].last_name,
+                        //             firstname: dataUpdate[index].first_name,
+                        //             middlename : dataUpdate[index].middle_name,
+                        //             birthdate: dataUpdate[index].birth_date,
+                        //             gender: dataUpdate[index].gender,
+                        //             address: dataUpdate[index].home_address,
+                        //             educationalAttainment: dataUpdate[index].education_attainment,
+                        //             position: dataUpdate[index].position,
+                        //             contactNo: dataUpdate[index].contact_number,
+                        //             emailAddress: dataUpdate[index].email_address,
+                        //             status: dataUpdate[index].status,
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setEmployeeData([...dataUpdate]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+                onRowDelete: oldData =>
+                    new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataDelete = [...employeeData];
+                        //     const index = oldData.tableData.id;
+                        //     dataDelete.splice(index, 1);
 
-            //                 axiosInstance.post('api/registrar/delete/employee',
-            //                     {
-            //                         employee_no: employeeData[index].employee_no,
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setEmployeeData([...dataDelete]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            // }}
+                        //     axiosInstance.post('api/registrar/delete/employee',
+                        //         {
+                        //             employee_no: employeeData[index].employee_no,
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setEmployeeData([...dataDelete]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+            }}
         
         />
-    </>
-
     )
 }
 

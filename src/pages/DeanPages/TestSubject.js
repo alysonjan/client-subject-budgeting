@@ -45,10 +45,6 @@ const TestSubject = () => {
     return (
     <div className={classes.root}>
         <div className={classes.mainContainer}>
-        {/* <div className={classes.button} >
-            <CollegeForm />
-        </div>
-        <br /> */}
             <Paper elevation={2}> 
                 <TestTable data={data} />
             </Paper>

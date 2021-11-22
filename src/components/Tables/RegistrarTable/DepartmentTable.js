@@ -54,7 +54,6 @@ const DepartmentTable = () => {
         try {
             const { data } = await axiosInstance.get('/department');
             setDepartmentData(data.result);
-            console.log(data.result);
         } catch (err) {
             console.error(err.message)
         }
@@ -66,7 +65,6 @@ const DepartmentTable = () => {
 
 
     return (
-        <>
         <MaterialTable
             title="Department Profile"
             icons = {tableIcons}
@@ -96,71 +94,67 @@ const DepartmentTable = () => {
             }}
             columns={[
                 {
-                    title: 'Code', field: 'department_code',
-                },
-                {
-                    title: 'College', field: 'college_code',
+                    title: 'College code', field: 'college_code',
                 },
                 {
                     title: 'Department', field: 'department_name',
                 },
                 {
-                    title: 'Status', field: 'status',
+                    title: 'Status', field: 'department_status',
                 },
         
             ]}
-            // editable={{
-            //     onRowUpdate: (newData, oldData) =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataUpdate = [...departmentData];
-            //                 const index = oldData.tableData.id;
-            //                 dataUpdate[index] = newData;
+            editable={{
+                onRowUpdate: (newData, oldData) =>
+                    new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataUpdate = [...departmentData];
+                        //     const index = oldData.tableData.id;
+                        //     dataUpdate[index] = newData;
 
-            //                 axiosInstance.put('api/registrar/update/department',
-            //                     {
-            //                         departmentCode: departmentData[index].department_code,
-            //                         departmentName: dataUpdate[index].department_name,
-            //                         status: dataUpdate[index].status,
+                        //     axiosInstance.put('api/registrar/update/department',
+                        //         {
+                        //             departmentCode: departmentData[index].department_code,
+                        //             departmentName: dataUpdate[index].department_name,
+                        //             status: dataUpdate[index].status,
     
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setDepartmentData([...dataUpdate]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            //     onRowDelete: oldData =>
-            //         new Promise((resolve, reject) => {
-            //             setTimeout(() => {
-            //                 const dataDelete = [...departmentData];
-            //                 const index = oldData.tableData.id;
-            //                 dataDelete.splice(index, 1);
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setDepartmentData([...dataUpdate]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+                onRowDelete: oldData =>
+                    new Promise((resolve, reject) => {
+                        // setTimeout(() => {
+                        //     const dataDelete = [...departmentData];
+                        //     const index = oldData.tableData.id;
+                        //     dataDelete.splice(index, 1);
 
-            //                 axiosInstance.post('api/registrar/delete/department',
-            //                     {
-            //                         departmentCode: departmentData[index].department_code,
-            //                     }).then((response) => {
-            //                         if (response.data.error) {
-            //                             //response modal
-            //                             reject();
-            //                         } else {
-            //                             setDepartmentData([...dataDelete]);
-            //                             setChangeTrigger(!changeTrigger);
-            //                             resolve();
-            //                         }
-            //                     });
-            //             }, 1000)
-            //         }),
-            // }}
+                        //     axiosInstance.post('api/registrar/delete/department',
+                        //         {
+                        //             departmentCode: departmentData[index].department_code,
+                        //         }).then((response) => {
+                        //             if (response.data.error) {
+                        //                 //response modal
+                        //                 reject();
+                        //             } else {
+                        //                 setDepartmentData([...dataDelete]);
+                        //                 setChangeTrigger(!changeTrigger);
+                        //                 resolve();
+                        //             }
+                        //         });
+                        // }, 1000)
+                    }),
+            }}
 
         />
-    </>
     )
 }
 

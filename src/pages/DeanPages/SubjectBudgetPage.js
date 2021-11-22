@@ -1,8 +1,8 @@
 import React,{useEffect, useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core'
-import CollegeTable from '../../components/Tables/DeanTable/SubjectBudgetTable';
-import CollegeForm from '../../components/Forms/DeanForms/SubjectBudgetForm';
+import SubjectBudgetTable from '../../components/Tables/DeanTable/SubjectBudgetTable';
+import SubjectBudgetForm from '../../components/Forms/DeanForms/SubjectBudgetForm';
 
 import axiosInstance from '../../helpers/axios';
 
@@ -46,11 +46,11 @@ const SubjectBudgetPage = () => {
     <div className={classes.root}>
         <div className={classes.mainContainer}>
         <div className={classes.button} >
-            <CollegeForm />
+            <SubjectBudgetForm />
         </div>
         <br />
             <Paper elevation={2}> 
-                <CollegeTable subjectBudget={subjectBudget} />
+                <SubjectBudgetTable subjectBudget={subjectBudget} />
             </Paper>
 
         </div>

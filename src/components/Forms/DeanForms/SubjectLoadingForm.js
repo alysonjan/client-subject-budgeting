@@ -8,28 +8,32 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import { FormControl } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import axiosInstance from '../../../helpers/axios';
+import SubjectLoadingTab from '../../Tabs/SubjectLoadingTab';
+import PersonAddRoundedIcon from '@mui/icons-material/PersonAddRounded';
+
 
 
 function FormDialog() {
 
     const [open, setOpen] = useState(false);
 
-    const [curriculumData, setCurriculumData] = useState([])
+    // const [curriculumData, setCurriculumData] = useState([])
 
-    useEffect(()=>{
-        axiosInstance.get('/get/curriculum').then(res => {   
-            setCurriculumData(res.data)
-        });
-    },[])
+    // useEffect(()=>{
+    //     axiosInstance.get('/get/curriculum').then(res => {   
+    //         setCurriculumData(res.data)
+    //     });
+    // },[])
     
 
-    const currCode = Object.values(
-        curriculumData.reduce((a, b) => {
-            if (!a[b.curriculum_code]) a[b.curriculum_code]=b
-            return a
-        },{})
-    )
+    // const currCode = Object.values(
+    //     curriculumData.reduce((a, b) => {
+    //         if (!a[b.curriculum_code]) a[b.curriculum_code]=b
+    //         return a
+    //     },{})
+    // )
 
     const [formData,setFormData] = useState({
         curriculum_code: '',
@@ -64,17 +68,19 @@ function FormDialog() {
 
     return (
         <div>
-        <Button variant="contained" color="primary" onClick={handleClickOpen}  >
-            Generate Subject
+        <Button variant="text" color="primary" onClick={handleClickOpen}  >
+            <PersonAddRoundedIcon/>
         </Button>
 
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth >
-            <DialogTitle id="form-dialog-title">Form</DialogTitle>
+            <DialogTitle id="form-dialog-title">Assign Subject</DialogTitle>
             <form onSubmit={e => onSubmit(e)}>
             <DialogContent>
 
+            <Paper><h2 style={{textAlign:"center"}}>Introduction to Programming II</h2></Paper>
+
             <FormControl fullWidth >
-                <InputLabel htmlFor="curriculum_code">Program</InputLabel>
+                <InputLabel htmlFor="curriculum_code">Assign Teacher</InputLabel>
                 <Select
                 native
                 required
@@ -83,56 +89,22 @@ function FormDialog() {
                 onChange={e => onChange(e)}
                 >
                 <option aria-label="None" value="" />
-                {currCode.map((val,key) => {
+                <option value="Ira Pongasi">Ira Pongasi</option>
+                <option value="Zandra Salas">Zandra Salas</option>
+                <option value="Farah Sombilon">Farah Sombilon</option>
+                <option value="Roden Ugang">Roden Ugang</option>
+                {/* {currCode.map((val,key) => {
                     return (<option key={key} value={val.curriculum_code}>{val.curriculum_code}</option> )
-                })};
-            
+                })}; */}
                 </Select>
             </FormControl>
+            <br /><br />
+            <Paper>
+                <SubjectLoadingTab/>
+            </Paper>
+    
 
-            <TextField
-                margin="dense"
-                label="First Year Students"
-                type="Number"
-                value={first_year_students}
-                name="first_year_students"
-                onChange={e => onChange(e)}
-                fullWidth
-                required
-            />
-
-            <TextField
-                margin="dense"
-                label="Second Year Students"
-                type="Number"
-                value={second_year_students}
-                name="second_year_students"
-                onChange={e => onChange(e)}
-                fullWidth
-                required
-            />
-
-            <TextField
-                margin="dense"
-                label="Third Year Students"
-                type="Number"
-                value={third_year_students}
-                name="third_year_students"
-                onChange={e => onChange(e)}
-                fullWidth
-                required
-            />
-
-            <TextField
-                margin="dense"
-                label="Fourth Year Students"
-                type="Number"
-                value={fourth_year_students}
-                name="fourth_year_students"
-                onChange={e => onChange(e)}
-                fullWidth
-                required
-            />
+        
 
             </DialogContent>
             <DialogActions>
@@ -140,7 +112,7 @@ function FormDialog() {
                 Cancel
             </Button>
             <Button type='submit' variant='contained' color="primary">
-                Generate
+                Assign
             </Button>
             </DialogActions>
             </form>
