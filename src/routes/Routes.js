@@ -13,7 +13,7 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 
 // Pages
 import SubjectBudgetPage from '../pages/DeanPages/SubjectBudgetPage';
-import testPage from '../pages/DeanPages/TestSubject';
+import SubjectLoadingPage from '../pages/DeanPages/SubjectLoadingPage';
 //Registrar
 import Colleges from '../pages/Registrar/Colleges';
 import Department from '../pages/Registrar/Department';
@@ -35,7 +35,7 @@ const RouteComponent = () => {
                 <SidebarComponent />
                 <Switch>
                     <ProtectedRoute exact path='/subject-budget' component={SubjectBudgetPage} />
-                    <ProtectedRoute exact path='/test' component={testPage} />
+                    <ProtectedRoute exact path='/subject-loading' component={SubjectLoadingPage} />
                     <ProtectedRoute exact path='/colleges' component={Colleges} />
                     <ProtectedRoute exact path='/department' component={Department} />
                     <ProtectedRoute exact path='/courses' component={Courses} />

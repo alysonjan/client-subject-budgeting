@@ -84,7 +84,8 @@ const LoginPage = () => {
     
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const onSubmit = async () => {
+    const onSubmit = async (e) => {
+        e.preventDefault()
         try {
             await axiosInstance.post('/user/login',formData).then(res => {
                 if (res.status === 200) {

@@ -7,7 +7,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import PersonAddRoundedIcon from '@mui/icons-material/PersonAddRounded';
 import SubjectLoadingForm from '../../Forms/DeanForms/SubjectLoadingForm';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -48,13 +47,9 @@ export default function DenseTable({data}) {
                 <StyledTableCell align="center">Descriptive Title</StyledTableCell>
                 <StyledTableCell align="center" colSpan={3}>Units<br/>Lec Lab Total</StyledTableCell>
                 <StyledTableCell align="center" colSpan={3}>Teaching hrs<br/>Lec Lab Total</StyledTableCell>
-                <StyledTableCell align="center">Students</StyledTableCell>
                 <StyledTableCell align="center">No. of Sections</StyledTableCell>
                 <StyledTableCell align="center">Total Teaching hrs.</StyledTableCell>
-                <StyledTableCell align="center">No. of Faculty</StyledTableCell>
-                <StyledTableCell align="center">RAD hrs.</StyledTableCell>
                 <StyledTableCell align="center">Action</StyledTableCell>
-
             </TableRow>
             </TableHead>
             <TableBody>
@@ -70,12 +65,9 @@ export default function DenseTable({data}) {
                 <StyledTableCell align="left">{item.lec_teaching_hours}</StyledTableCell>
                 <StyledTableCell align="left">{item.lab_teaching_hours}</StyledTableCell>
                 <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.total_teaching_hours}</StyledTableCell>
-                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.students}</StyledTableCell>
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.no_of_sections}</StyledTableCell>
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.overall_teaching_hours}</StyledTableCell>
-                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.no_of_faculty}</StyledTableCell>
-                <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.rad_hours}</StyledTableCell>
-                <StyledTableCell align="center"><SubjectLoadingForm/></StyledTableCell>
+                <StyledTableCell align="center" > <SubjectLoadingForm subjectdata={item.subject_name}/> </StyledTableCell>
                 
 
                 </StyledTableRow>

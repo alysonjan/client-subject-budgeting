@@ -52,7 +52,6 @@ const SubjectBudgetPage = () => {
             <Paper elevation={2}> 
                 <SubjectBudgetTable subjectBudget={subjectBudget} />
             </Paper>
-
         </div>
     </div>
 

@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -15,7 +14,7 @@ import PersonAddRoundedIcon from '@mui/icons-material/PersonAddRounded';
 
 
 
-function FormDialog() {
+function FormDialog(props) {
 
     const [open, setOpen] = useState(false);
 
@@ -77,7 +76,7 @@ function FormDialog() {
             <form onSubmit={e => onSubmit(e)}>
             <DialogContent>
 
-            <Paper><h2 style={{textAlign:"center"}}>Introduction to Programming II</h2></Paper>
+            <Paper><h2 style={{textAlign:"center"}}>{props.subjectdata}</h2></Paper>
 
             <FormControl fullWidth >
                 <InputLabel htmlFor="curriculum_code">Assign Teacher</InputLabel>

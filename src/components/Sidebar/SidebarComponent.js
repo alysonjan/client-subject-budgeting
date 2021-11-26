@@ -169,7 +169,7 @@ export default function MiniDrawer() {
                             </ListItem>
                         </Link>
 
-                        <Link to='/test' className={classes.link}>
+                        <Link to='/subject-loading' className={classes.link}>
                             <ListItem button key={'Subject Loading'}>
                                 <ListItemIcon> <ListAltIcon/> </ListItemIcon>
                                 <ListItemText primary={'Subject Loading'} />

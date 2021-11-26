@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core'
-import TestTable from '../../components/Tables/DeanTable/TestSubjectTable';
+import SubjectLoadingTable from '../../components/Tables/DeanTable/SubjectLoadingTable';
 // import CollegeForm from '../../components/Forms/DeanForms/SubjectBudgetForm';
 
 import axiosInstance from '../../helpers/axios';
@@ -46,7 +46,7 @@ const TestSubject = () => {
     <div className={classes.root}>
         <div className={classes.mainContainer}>
             <Paper elevation={2}> 
-                <TestTable data={data} />
+                <SubjectLoadingTable data={data} />
             </Paper>
 
         </div>

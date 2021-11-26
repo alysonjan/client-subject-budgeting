@@ -51,7 +51,6 @@ export default function DenseTable({subjectBudget}) {
                 <StyledTableCell align="center">Total Teaching hrs.</StyledTableCell>
                 <StyledTableCell align="center">No. of Faculty</StyledTableCell>
                 <StyledTableCell align="center">RAD hrs.</StyledTableCell>
-
             </TableRow>
             </TableHead>
             <TableBody>
