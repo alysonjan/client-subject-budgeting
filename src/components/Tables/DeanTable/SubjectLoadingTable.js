@@ -45,8 +45,8 @@ export default function DenseTable({data}) {
                 <StyledTableCell align="center">Year</StyledTableCell>
                 <StyledTableCell align="center">Course code</StyledTableCell>
                 <StyledTableCell align="center">Descriptive Title</StyledTableCell>
-                <StyledTableCell align="center" colSpan={3}>Units<br/>Lec Lab Total</StyledTableCell>
-                <StyledTableCell align="center" colSpan={3}>Teaching hrs<br/>Lec Lab Total</StyledTableCell>
+                {/* <StyledTableCell align="center" colSpan={3}>Units<br/>Lec Lab Total</StyledTableCell>
+                <StyledTableCell align="center" colSpan={3}>Teaching hrs<br/>Lec Lab Total</StyledTableCell> */}
                 <StyledTableCell align="center">No. of Sections</StyledTableCell>
                 <StyledTableCell align="center">Total Teaching hrs.</StyledTableCell>
                 <StyledTableCell align="center">Action</StyledTableCell>
@@ -59,12 +59,12 @@ export default function DenseTable({data}) {
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.year_level}</StyledTableCell>
                 <StyledTableCell sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.subject_code}</StyledTableCell>
                 <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.subject_name}</StyledTableCell>
-                <StyledTableCell align="left" >{item.lec_units}</StyledTableCell>
+                {/* <StyledTableCell align="left" >{item.lec_units}</StyledTableCell>
                 <StyledTableCell align="left" >{item.lab_units}</StyledTableCell>
                 <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.total_units}</StyledTableCell>
                 <StyledTableCell align="left">{item.lec_teaching_hours}</StyledTableCell>
                 <StyledTableCell align="left">{item.lab_teaching_hours}</StyledTableCell>
-                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.total_teaching_hours}</StyledTableCell>
+                <StyledTableCell align="left" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.total_teaching_hours}</StyledTableCell> */}
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.no_of_sections}</StyledTableCell>
                 <StyledTableCell align="center" sx={{ borderRight: 1,borderRightColor: '#676767'}}>{item.overall_teaching_hours}</StyledTableCell>
                 <StyledTableCell align="center" > <SubjectLoadingForm subjectdata={item.subject_name}/> </StyledTableCell>

@@ -71,13 +71,13 @@ export default function BasicTabs() {
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <label>Days</label>
                     <div>
-                        <Checkbox {...label} disabled />Monday
+                        <Checkbox {...label} />Monday
                     </div>
                     <div>
                         <Checkbox {...label} />Tuesday
                     </div>
                     <div>
-                        <Checkbox {...label} disabled />Wednesday
+                        <Checkbox {...label} />Wednesday
                     </div>
                     <div>
                         <Checkbox {...label} />Thursday
@@ -92,27 +92,24 @@ export default function BasicTabs() {
 
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <label>Time</label>
-                    <RadioGroup>
                     <div>
-                        <FormControlLabel value="7:00 AM - 8:00 AM" control={<Radio disabled />} label="7:00 AM - 8:00 AM" />
+                        <Checkbox {...label}  value="7:00 AM - 8:00 AM" />7:00 AM - 8:00 AM
                     </div>
                     <div>
-                        <FormControlLabel value="8:00 AM - 11:00 AM" control={<Radio />} label="8:00 AM - 11:00 AM" />
+                        <Checkbox {...label} value="8:00 AM - 11:00 AM" />8:00 AM - 11:00 AM
                     </div>
                     <div>
-                        <FormControlLabel value="1:00 PM - 3:00 PM" control={<Radio />} label="1:00 PM - 3:00 PM" />
+                        <Checkbox {...label} value="1:00 PM - 3:00 PM" />1:00 PM - 3:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="1:00 PM - 4:00 PM" control={<Radio disabled />} label="1:00 PM - 4:00 PM" />
+                        <Checkbox {...label} value="1:00 PM - 4:00 PM" />1:00 PM - 4:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="4:00 PM - 5:00 PM" control={<Radio />} label="4:00 PM - 5:00 PM" />
+                        <Checkbox {...label} value="4:00 PM - 5:00 PM" />4:00 PM - 5:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="5:00 PM - 6:00 PM" control={<Radio />} label="5:00 PM - 6:00 PM" />
+                        <Checkbox {...label} value="5:00 PM - 6:00 PM" />5:00 PM - 6:00 PM
                     </div>
-
-                    </RadioGroup>
                 </div>
 
             </div>
@@ -145,27 +142,24 @@ export default function BasicTabs() {
 
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <label>Time</label>
-                    <RadioGroup>
                     <div>
-                        <FormControlLabel value="7:00 AM - 8:00 AM" control={<Radio />} label="7:00 AM - 8:00 AM" />
+                        <Checkbox {...label}  value="7:00 AM - 8:00 AM" />7:00 AM - 8:00 AM
                     </div>
                     <div>
-                        <FormControlLabel value="8:00 AM - 11:00 AM" control={<Radio />} label="8:00 AM - 11:00 AM" />
+                        <Checkbox {...label} value="8:00 AM - 11:00 AM" />8:00 AM - 11:00 AM
                     </div>
                     <div>
-                        <FormControlLabel value="1:00 PM - 3:00 PM" control={<Radio />} label="1:00 PM - 3:00 PM" />
+                        <Checkbox {...label} value="1:00 PM - 3:00 PM" />1:00 PM - 3:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="1:00 PM - 4:00 PM" control={<Radio />} label="1:00 PM - 4:00 PM" />
+                        <Checkbox {...label} value="1:00 PM - 4:00 PM" />1:00 PM - 4:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="4:00 PM - 5:00 PM" control={<Radio />} label="4:00 PM - 5:00 PM" />
+                        <Checkbox {...label} value="4:00 PM - 5:00 PM" />4:00 PM - 5:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="5:00 PM - 6:00 PM" control={<Radio />} label="5:00 PM - 6:00 PM" />
+                        <Checkbox {...label} value="5:00 PM - 6:00 PM" />5:00 PM - 6:00 PM
                     </div>
-
-                    </RadioGroup>
                 </div>
 
             </div>
@@ -198,27 +192,24 @@ export default function BasicTabs() {
 
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <label>Time</label>
-                    <RadioGroup>
                     <div>
-                        <FormControlLabel value="7:00 AM - 8:00 AM" control={<Radio />} label="7:00 AM - 8:00 AM" />
+                        <Checkbox {...label}  value="7:00 AM - 8:00 AM" />7:00 AM - 8:00 AM
                     </div>
                     <div>
-                        <FormControlLabel value="8:00 AM - 11:00 AM" control={<Radio />} label="8:00 AM - 11:00 AM" />
+                        <Checkbox {...label} value="8:00 AM - 11:00 AM" />8:00 AM - 11:00 AM
                     </div>
                     <div>
-                        <FormControlLabel value="1:00 PM - 3:00 PM" control={<Radio />} label="1:00 PM - 3:00 PM" />
+                        <Checkbox {...label} value="1:00 PM - 3:00 PM" />1:00 PM - 3:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="1:00 PM - 4:00 PM" control={<Radio />} label="1:00 PM - 4:00 PM" />
+                        <Checkbox {...label} value="1:00 PM - 4:00 PM" />1:00 PM - 4:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="4:00 PM - 5:00 PM" control={<Radio />} label="4:00 PM - 5:00 PM" />
+                        <Checkbox {...label} value="4:00 PM - 5:00 PM" />4:00 PM - 5:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="5:00 PM - 6:00 PM" control={<Radio />} label="5:00 PM - 6:00 PM" />
+                        <Checkbox {...label} value="5:00 PM - 6:00 PM" />5:00 PM - 6:00 PM
                     </div>
-
-                    </RadioGroup>
                 </div>
 
             </div>
@@ -251,29 +242,25 @@ export default function BasicTabs() {
 
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <label>Time</label>
-                    <RadioGroup>
                     <div>
-                        <FormControlLabel value="7:00 AM - 8:00 AM" control={<Radio />} label="7:00 AM - 8:00 AM" />
+                        <Checkbox {...label}  value="7:00 AM - 8:00 AM" />7:00 AM - 8:00 AM
                     </div>
                     <div>
-                        <FormControlLabel value="8:00 AM - 11:00 AM" control={<Radio />} label="8:00 AM - 11:00 AM" />
+                        <Checkbox {...label} value="8:00 AM - 11:00 AM" />8:00 AM - 11:00 AM
                     </div>
                     <div>
-                        <FormControlLabel value="1:00 PM - 3:00 PM" control={<Radio />} label="1:00 PM - 3:00 PM" />
+                        <Checkbox {...label} value="1:00 PM - 3:00 PM" />1:00 PM - 3:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="1:00 PM - 4:00 PM" control={<Radio />} label="1:00 PM - 4:00 PM" />
+                        <Checkbox {...label} value="1:00 PM - 4:00 PM" />1:00 PM - 4:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="4:00 PM - 5:00 PM" control={<Radio />} label="4:00 PM - 5:00 PM" />
+                        <Checkbox {...label} value="4:00 PM - 5:00 PM" />4:00 PM - 5:00 PM
                     </div>
                     <div>
-                        <FormControlLabel value="5:00 PM - 6:00 PM" control={<Radio />} label="5:00 PM - 6:00 PM" />
+                        <Checkbox {...label} value="5:00 PM - 6:00 PM" />5:00 PM - 6:00 PM
                     </div>
-
-                    </RadioGroup>
                 </div>
-
             </div>
 
         </TabPanel>

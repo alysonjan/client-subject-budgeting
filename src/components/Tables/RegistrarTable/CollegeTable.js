@@ -70,7 +70,6 @@ const CollegeTable = () => {
                 draggable: false,
                 sorting: false,
                 search:true,
-                actionsColumnIndex: -1,
                 rowStyle: {
                 backgroundColor: '#fdfbfb',
                 },
